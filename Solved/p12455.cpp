@@ -1,56 +1,50 @@
 /*
-*
-* Problema UVA 12455 - Bars
-*
+ *
+ * Problema UVa 12455 - Bars
+ *
 */
 
 #include <bits/stdc++.h>
 
 using namespace std;
 
-bool combinations(vector<int>& vec, int& c, int& val ){
-	int i, numC = pow(2, c), j, sum;
-	string s;
+int ans = 0;
 
-	for(i = 1; i <= numC; i++){
-		sum = 0;
-		s = bitset<32>(i).to_string();
-		for(j = 32; j >= 0; j--){
-			if( s[32-j] == '1' && 31-(32-j) < c ){
-				sum += vec[31-(32-j)];
-			}
-		}
-
-		if(sum == val){
-			return true;
-		}
-	}
-
-	return false;
+void backTracking(vector<int>& nums, int i, int acum, int& val){
+    if( acum == val ){
+        ans = 1;
+        return;
+    }else if( acum > val || i == nums.size() ){
+        return;
+    }
+    backTracking(nums, i+1, acum + nums[i], val);
+    backTracking(nums, i+1, acum, val);
 }
 
 int main(){
-	int cases, val, n, i, aux;
+    int cases, val, n, i, aux, sum;
 
-	scanf("%d", &cases);
+    scanf("%d\n", &cases);
 
-	while(cases--){
-		scanf("%d", &val);
-		scanf("%d", &n);
+    while(cases--){
+        scanf("%d\n%d\n", &val, &n);
+        vector<int> nums;
 
-		vector<int> nums;
+        for(i = 0; i < n; i++){
+            scanf("%d", &aux);
+            nums.push_back(aux);
+        }
+        i = 0;
+        sum = 0;
+        ans = 0;
+        backTracking(nums, i, sum, val);
 
-		for(i = 0; i < n; i++){
-			scanf("%d", &aux);
-			nums.push_back(aux);
-		}
+        if( ans == 0){
+            printf("NO\n");
+        }else{
+            printf("YES\n");
+        }
+    }
 
-		if( combinations(nums, n, val) ){
-			printf("YES\n");
-		}else{
-			printf("NO\n");
-		}
-	}
-
-	return 0;
+    return 0;
 }
