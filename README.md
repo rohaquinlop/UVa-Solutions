@@ -10,7 +10,7 @@ My principal motivation in publishing these solutions is to give you another per
 My name is Robin, I'm a systems engineering student at the Pontifical Xavieran University (in Spanish Pontificia Universidad Javeriana) in Cali, Colombia. Nowadays, I'm interested in programming contests and learning new techniques to solve problems efficiently.
 
 ### Contact
-You can write to my e-mail: rohakinlo301@javerianacali.educ.co
+You can write to my e-mail: rohakinlo301@javerianacali.edu.co
 
 I'll answer you as fast as I can.
 
