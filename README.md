@@ -6,7 +6,7 @@ In general I use C, C++ or Python to solve them. These codes doesn't have commen
 ### Motivation
 My principal motivation in publishing these solutions is to give you another perspective about the problems, it is possible that your solution is more intuitive than mine, but it can be usefull to see through another glass.
 
-### About me,
+### About me
 My name is Robin, I'm a systems engineering student at the Pontifical Xavieran University (in Spanish Pontificia Universidad Javeriana) in Cali, Colombia. Nowadays, I'm interested in programming contests and learning new techniques to solve problems efficiently.
 
 ### Contact
