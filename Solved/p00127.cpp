@@ -1,92 +1,88 @@
 /*
-*
-* Problema UVA 127 - "Accordian" Patience
-*
+ *
+ * Problema UVa 127 - "Accordian" Patience
+ *
 */
-
-#include <iostream>
-#include <string>
-#include <vector>
+#include<iostream>
+#include<string>
+#include<stack>
+#include<vector>
 
 using namespace std;
 
 int main(){
-	vector< vector<string> > cards;
-	vector<string> pile;
-	string line, aux1, aux2;
-	int i, max;
-	bool find;
+    int i;
+    string card, card1;
+    bool finded;
 
-	while(true){
-		cin >> line;
-		if(line == "#"){
-			break;
-		}else{
-			find = false;
-			max = 52;
-			pile.push_back(line);
-			cards.push_back(pile);
-			pile.clear();
-			for(i = 0; i < max-1; i++ ){
-				cin >> line;
-				pile.push_back(line);
-				cards.push_back(pile);
-				pile.clear();
-			}
+    while( cin >> card ){
+        if( card == "#" ){
+            break;
+        }else{
+            vector< stack<string> > cards;
+            stack<string> pila;
+            pila.push(card);
+            cards.push_back( pila );
+            pila.pop();
 
-			i = 0;
+            for(i = 0; i < 51; i++){
+                cin >> card;
+                pila.push( card );
+                cards.push_back( pila );
+                pila.pop();
+            }
 
-			while( i < cards.size() ){
-				find = false;
-				if(i >=3){
-					aux1 = cards[i].back();
-					aux2 = cards[i-3].back();
-					if( aux1[0] == aux2[0] || aux1[1] == aux2[1]){
-						cards[i-3].push_back( cards[i].back() );
-						cards[i].pop_back();
-						if(cards[i].size() == 0){
-							cards.erase(cards.begin()+i);
-						}
-						find = true;
-						i = 0;
-					}
-				}
-				if( i >= 1){
-					aux1 = cards[i].back();
-					aux2 = cards[i-1].back();
-					if( aux1[0] == aux2[0] || aux1[1] == aux2[1]){
-						cards[i-1].push_back( cards[i].back() );
-						cards[i].pop_back();
-						if(cards[i].size() == 0){
-							cards.erase(cards.begin()+i);
-						}
-						find = true;
-						i = 0;
-					}
-				}
-				if(find == true){
-					continue;
-				}else if(find == false){
-					i++;
-				}
-			}
+            i = 0;
+            while( i < cards.size() ){
+                finded = false;
 
-			if( cards.size() == 1 ){
-				cout << "1 pile remaining: 52" << endl;
-			}else{
-				cout << cards.size() << " piles remaining:";
+		if( i >= 3 ){
+                    card = cards[i].top();
+                    card1 = cards[i-3].top();
+                    if( card[0] == card1[0] || card[1] == card1[1] ){
+                        cards[i-3].push( card );
+                        cards[i].pop();
+                        if( cards[i].empty() ){
+                            cards.erase( cards.begin() + i );
+                        }
+                        finded = true;
+                        i = 0;
+                    }
+                }
 
-				for(i = 0; i < cards.size(); i++){
-					cout <<" " << cards[i].size();
-				}
-				cout << endl;
-			}
+		if( i >= 1 ){
+                    card = cards[i].top();
+                    card1 = cards[i-1].top();
+                    if( card[0] == card1[0] || card[1] == card1[1] ){
+                        cards[i-1].push( card );
+                        cards[i].pop();
+                        if( cards[i].empty() ){
+                            cards.erase( cards.begin() + i );
+                        }
 
-			cards.clear();
-			pile.clear();
-		}
-	}
+                        finded = true;
+                        i = 0;
+                    }
+                }
+
+                if( finded == false ){
+                    i++;
+                }
+            }
+
+            if( cards.size() == 1 ){
+                cout << "1 pile remaining: 52\n";
+            }else{
+                cout << cards.size() << " piles remaining:";
+
+                for(i = 0; i < cards.size(); i++){
+                    cout << " " << cards[i].size();
+                }
+                cout << endl;
+            }
+        }
+    }
 
 
-	return 0;
+    return 0;
 }
