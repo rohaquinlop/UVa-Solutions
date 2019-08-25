@@ -1,7 +1,7 @@
 /*
-
-Problema UVA 100 | 3n + 1
-
+*
+* Problema UVA 100 | 3n + 1
+*
 */
 
 #include <stdio.h>
