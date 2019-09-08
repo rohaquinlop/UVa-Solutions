@@ -92,6 +92,7 @@ void Graph::SCC(){
     // connected components in DFS tree with vertex 'i' 
     for (int i = 0; i < V; i++) 
         if (disc[i] == NIL){
+            if( countSCCs > 1 ) break;
             SCCUtil(i, disc, low, st, stackMember); 
         }
 }
