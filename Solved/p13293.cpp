@@ -3,6 +3,7 @@
 * Problema UVa 13293 - All-star Three-point Contest
 *
 */
+
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -20,7 +21,11 @@ public:
 
 	bool operator<(const Player& p){
 		if( p.points == this->points ){
-			return this->name < p.name;
+			string n1 = this->name;
+			string n2 = p.name;
+			transform(n1.begin(), n1.end(), n1.begin(), ::tolower);
+			transform(n2.begin(), n2.end(), n2.begin(), ::tolower);
+			return n1 < n2;
 		}
 		return this->points > p.points;
 	}
