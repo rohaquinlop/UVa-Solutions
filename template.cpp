@@ -16,12 +16,6 @@ typedef vector <string> vs;
 typedef vector < vi > vvi;
 typedef vector < vll > vvll;
 
-#define fl(i, a, b)	for (int i(a); i <= (b); i ++)
-#define rep(i, n)		fl (i, 1, (n))
-#define loop(i, n)		fl (i, 0, (n) - 1)
-#define rfl(i, a, b)	for (int i(a); i >= (b); i --)
-#define rrep(i, n)		rfl (i, (n), 1)
-
 #define all(v) 	(v).begin(), (v).end()
 #define srt(v)	sort (all (v))
 
