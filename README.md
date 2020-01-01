@@ -11,7 +11,7 @@ My name is Robin, I'm a systems engineering student at Pontificia Universidad Ja
 
 # Reached
 ## 2019
-* UVa Solutions: 173
+* UVa Solutions: 179
 * Topics: 
     * Data Structures
     * Graphs
