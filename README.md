@@ -30,6 +30,8 @@ My name is Robin, I'm a systems engineering student at Pontificia Universidad Ja
 * Top 5 ICPC Colombia National
 * Top 40 ICPC South America-North Finals
 
+---
+
 ### Contact
 You can write me to: rohakinlo301@javerianacali.edu.co
 I'll answer you as fast as I can.
