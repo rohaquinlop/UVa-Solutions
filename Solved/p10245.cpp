@@ -107,11 +107,11 @@ long double minDistanceSets(vector<Point> a, vector<Point> b, long double x, lon
     ++i;
   }
 
-  long double minDist = distancePoints( a[0], b[0] );
+  long double minDist = distancePoints( s[0], s[1] );
 
-  fl(i, 0, len(a)){
-    fl(j, 0, len(b)){
-      minDist = minVal( minDist, distancePoints(a[i], b[j])  );
+  fl(i, 0, len(s)-1){
+    fl(j, i+1, len(s)){
+      minDist = minVal( minDist, distancePoints(s[i], s[j])  );
     }
   }
 
@@ -145,7 +145,7 @@ long double aux(vector<Point> v){
     vector<Point> s2 = vecs.second;
     long double d1 = aux(s1);
     long double d2 = aux(s2);
-    long double d3 = minDistanceSets(s1, s2, s1[len(s1)-1].x, minVal(d1, d2));
+    long double d3 = minDistanceSets(s1, s2, s2[0].x, minVal(d1, d2));
     // cout << d1 << " " << d2 << " " << d3 << endl;
     return minVal( d3, minVal(d1, d2) );
   }
