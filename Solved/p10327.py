@@ -1,39 +1,87 @@
 '''
 *
+*
 * Problema UVa 10327 - Flip Sort
-* There is an error in UVa's input for that Python got time limit, but the algorithm works and is optimized
+*
 *
 '''
+from sys import stdin, stdout
 
-from sys import *
+count = 0
 
-def flipsort(lst):
-	count = 0
+## Merge Sort
+def concatenate(a, b):
+	"""
+	Funcion que recibe dos listas y las concatena respetando el orden de cada elemento
+	"""
+	global count
+	res = []
 	i = 0
-	while i < len(lst)-1:
-		a = lst[i]
-		b = lst[i+1]
-		if a > b:
-			count += 1
-			tmp = a
-			lst[i] = b
-			lst[i+1] = a
-			i = 0
-		else:
+	j = 0
+	while (i < len(a)) or ( j < len(b)):
+		if i == len(a):
+			res.append(b[j])
+			j += 1
+		elif j == len(b):
+			res.append(a[i])
 			i += 1
-	return count
+		else:
+			if a[i] <= b[j]:
+				res.append(a[i])
+				i += 1
+			else:
+				res.append(b[j])
+				count += len(a)-i
+				j += 1
+	return res
+
+def divideLst(lst):
+	res = []
+	mid = len(lst)//2
+	i = 0
+	while i < mid:
+		res.append(lst[i])
+		i += 1
+	return res, lst[i::]
+
+def mergeSort(lst):
+	if len(lst) == 1:
+		return lst
+	else:
+		a, b = divideLst(lst)
+		return concatenate( mergeSort(a), mergeSort(b) )
 
 def main():
+	global count
 	lines = stdin.readlines()
 	lines = list(map(int, (" ".join(map(lambda x: x.strip(), lines))).split()))
 	out = ""
 	while len(lines):
+		count = 0
 		elem = lines.pop(0)
 		nums = []
 		while elem:
 			nums.append(lines.pop(0))
 			elem -= 1
-		out += "Minimum exchange operations : " + str(flipsort(nums)) + "\n"
-	print(out.strip())
+		nums = mergeSort(nums)
+		out += "Minimum exchange operations : " + str(count) + "\n"
+	stdout.write(out)
+
+"""
+def main():
+	global count
+	out = ""
+	while True:
+		n = stdin.readline()
+		if len(n) != 0:
+			count = 0
+			n = int(n)
+			nums = [ int(x) for x in stdin.readline().split() ]
+			nums = mergeSort(nums)
+			out += "Minimum exchange operations : "  + str(count) + "\n"
+		else:
+			stdout.write(out)
+			break
+"""
 
 main()
