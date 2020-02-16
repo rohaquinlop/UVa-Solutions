@@ -51,6 +51,7 @@ def mergeSort(lst):
 		a, b = divideLst(lst)
 		return concatenate( mergeSort(a), mergeSort(b) )
 
+"""
 def main():
 	global count
 	lines = stdin.readlines()
@@ -66,7 +67,7 @@ def main():
 		nums = mergeSort(nums)
 		out += "Minimum exchange operations : " + str(count) + "\n"
 	stdout.write(out)
-
+"""
 """
 def main():
 	global count
@@ -83,5 +84,23 @@ def main():
 			stdout.write(out)
 			break
 """
+
+def main():
+  global count
+  lines = stdin.readlines()
+  lines = list(map(int, (" ".join(map(lambda x: x.strip(), lines))).split()))
+  i = 0
+  while i < len(lines):
+    count = 0
+    elem = lines[i]
+    nums = []
+    i += 1
+    j = 0
+    while j < elem:
+      nums.append(lines[i])
+      i += 1
+      j += 1
+    nums = mergeSort(nums)
+    stdout.write("Minimum exchange operations : " + str(count) + "\n")
 
 main()
