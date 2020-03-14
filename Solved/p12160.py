@@ -27,7 +27,7 @@ def main():
     q.append([startNode, 0])
     found = False
     steps = 0
-    memo = dict()
+    memo = [0 for v in range(10001)]
     memo[startNode] = 1
     j = 0
 
@@ -44,8 +44,7 @@ def main():
       for r in rV:
         t = (node+r)%10000
         #q.append([t, l[1]+1])
-        v = memo.get(t)
-        if v == None:
+        if memo[t] == 0:
           q.append([t, l[1]+1])
           memo[t] = 1
     
