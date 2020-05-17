@@ -39,7 +39,7 @@ void DFS(int v){
 
     if(v == p.top()){
       numSCC++;
-      //cout << "SCC #" << secondTag[v] << ": ";
+      cout << "SCC #" << secondTag[v] << ": ";
       while(p.top() != v){
 
       }
@@ -47,13 +47,13 @@ void DFS(int v){
   }
 
   if(secondTag[v] == visited[v]){
-    //cout << "SCC #" << secondTag[v] << ": ";
+    cout << "SCC #" << secondTag[v] << ": ";
     while(p.top() != v){
       cout << p.top() << " ";
       secondTag[p.top()] = numSCC-1;
       p.pop();
     }
-    cout << p.top() << " ";
+    cout << p.top() << " \n";
     secondTag[p.top()] = numSCC-1;
     p.pop();
     s.pop();
@@ -64,6 +64,7 @@ int main(){
   int m, s1, s2;
 
   while(cin >> n >> m){
+    graph = vector< vector<int> >(n);
     t = 0;
     for(int i = 0; i < m; ++i){
       cin >> s1 >> s2;
