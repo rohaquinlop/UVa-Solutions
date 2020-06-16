@@ -36,15 +36,15 @@ void DFS(int v){
   }
 
   if(secondTag[v] == visited[v]){
-    //cout << "SCC #" << secondTag[v] << ": ";
-    while(pila.top() != v){
-      cout << pila.top() << " ";
-      isInStack[pila.top()] = 0;
-      pila.pop();
+    cout << "SCC #" << secondTag[v] << ": ";
+    while(p.top() != v){
+      cout << p.top() << " ";
+      isInStack[p.top()] = 0;
+      p.pop();
     }
-    cout << pila.top() << " ";
-    isInStack[pila.top()] = 0;
-    pila.pop();
+    cout << p.top() << " ";
+    isInStack[p.top()] = 0;
+    p.pop();
   }
 }
 

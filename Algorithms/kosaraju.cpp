@@ -26,10 +26,9 @@ void DFS2(int s, vector<vector<int>> &graph, vector<int> &m){
 }
 
 void kosaraju(vector<vector<int>> &graph, vector<vector<int>> &graphT, vector<int> &visited1, vector<int> &visited2){
-	vector<int>::iterator it;
 	//Start first DFS Toposort
-	for(it = graph.begin(); it != graph.end(); ++it){
-		if(!visited1[it->first]) DFS1(it->first, graph, visited1);
+	for(int i = 0; i < graph.size(); ++i){
+		if(!visited1[i]) DFS1(i, graph, visited1);
 	}
 
 	//Do DFS in transpose graph
