@@ -11,12 +11,12 @@ def minVal(p, q):
   else:
     return q
 
-def minDistancePointSet(A, B, x, w):
+def minDistancePointSet(A, B, mid, d):
   s = []
   i = len(A)-1
 
   while i >= 0:
-    if( x-A[i][0] <= w ):
+    if(mid-A[i][0] <= d):
       s.append(A[i])
     else:
       break
@@ -24,27 +24,28 @@ def minDistancePointSet(A, B, x, w):
   
   i = 0
   while i < len(B):
-    if( B[i][0]-x <= w ):
+    if( B[i][0]-mid <= d ):
       s.append(B[i])
     else:
       break
     i += 1
   
   minDistance = 10000.0
-
+  s.sort(key= lambda e : e[1])
   for i in range(len(s)-1):
-    for j in range(i+1, len(s)):
-      minDistance = minVal(minDistance, pointsDistance(s[i], s[j]))
-  
+    minDistance = minVal( minDistance, pointsDistance(s[i], s[i+1]))
   return minDistance
 
 def aux(lst):
   ##Solving the problem
 
-  if len(lst) == 1 or len(lst) == 0:
-    return 10000.0
-  elif len(lst) == 2:
-    return pointsDistance(lst[0], lst[1])
+  if len(lst) <= 3:
+    ## Brute Force 3^2 = 9 | No problem
+    res = 10000.0
+    for i in range(len(lst)-1):
+      for j in range(i+1, len(lst)):
+        res = minVal(res, pointsDistance(lst[i], lst[j]))
+    return res
   else:
     A = lst[0:len(lst)>>1] ##Lefft side
     B = lst[len(lst)>>1::] ##Right side
@@ -78,6 +79,5 @@ def main():
       else:
         out += "INFINITY\n"
   print(out.strip())
-
 
 main()
