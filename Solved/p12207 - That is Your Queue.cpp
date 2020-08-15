@@ -1,0 +1,114 @@
+/*
+*
+* Problema UVa 12207 - That is Your Queue
+*
+*/
+
+#include <bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef unsigned long long ull;
+
+typedef vector <int> vi;
+typedef vector <ll> vll;
+typedef pair <int, int> pii;
+typedef pair <ll, ll> pll;
+
+typedef vector < pii > vpii;
+typedef vector < pll > vpll;
+
+typedef vector <string> vs;
+typedef vector < vi > vvi;
+typedef vector < vll > vvll;
+
+#define fl(i, a, b)	for (int i = a; i < b; ++i)
+
+#define all(v) 	(v).begin(), (v).end()
+#define srt(v)	sort (all (v))
+
+#define pb push_back
+#define mp make_pair
+
+#define dig(i)	(s[i] - '0')
+#define slen(s)	s.length()
+
+#define fr first
+#define sc second
+
+#define len(x) x.size()
+#define fill(x, y)	memset(x, y, sizeof(x))
+#define clr(a)	fill(a, 0)
+#define endl '\n'
+
+#define PI 3.14159265358979323
+
+#define trace1(x1)					cerr << #x1 << ": " << x1 << endl;
+#define trace2(x1, x2)				cerr << #x1 << ": " << x1 << " | " << #x2 << ": " << x2 << endl;
+#define trace3(x1, x2, x3)			cerr << #x1 << ": " << x1 << " | " << #x2 << ": " << x2 << " | " << #x3 << ": " << x3 << endl;
+
+#define FAST_IO ios_base::sync_with_stdio(false); cin.tie(0); cout.tie(0)
+
+const ll MOD = 1000000007LL;
+const ll MAX = 100010LL;
+
+template <typename T> T gcd(T a, T b) { if (b == 0) return a; return gcd(b, a % b);}
+template <typename T> T power(T x, T y, ll m = MOD) { T ans = 1; x %= m; while (y > 0) { if (y & 1ll) ans = (ans * x) % m; y >>= 1ll; x = (x * x)%m; } return ans%m;}
+
+void checkNum(deque<int> &d, int &n, int &num){
+  deque<int>::iterator it;
+  bool found = false;
+  for(it = d.begin(); it != d.end() and !found; it++){
+    if(*it == num){
+      d.erase(it);
+      found = true;
+    }
+  }
+}
+
+int main() {
+	FAST_IO;
+  int p, c, cnt=0, i, num, idx, aux;
+  string s;
+
+  while(cin >> p >> c){
+    if(!p and !c) break;
+    else{
+      cnt++;
+      deque<int> d;
+      queue<int> cola;
+      /*
+      1 <= P <= 10^9 and 1 <= C <= 10^3
+      Máximo posible en el peor serían los C comandos, en caso de ser superior simplemente se agrega el número al comportamiento del deck
+      */
+      int n = min(p, c);
+      fl(i, 0, n){
+        d.push_back(i+1);
+      }
+      fl(i, 0, c){
+        cin >> s;
+        if(s == "N"){
+          num = d.front();
+          cola.push(num);
+          d.pop_front();
+          d.push_back(num);
+        }
+        else{
+          //Verificar si el número se encuentra en el deck y eliminarlo, posteriormente agregarlo al inicio
+          cin >> aux;
+          checkNum(d, n, aux);
+          d.push_front(aux);
+        }
+      }
+      //Print ans
+      cout << "Case " << cnt << ":" << endl;
+      while(!cola.empty()){
+        cout << cola.front() << endl;
+        cola.pop();
+      }
+    }
+  }
+
+
+	return 0;
+}
