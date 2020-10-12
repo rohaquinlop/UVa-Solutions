@@ -47,18 +47,18 @@ bool bellmanFordOpt(int s){
       v = adj[u][i].first;
       peso = adj[u][i].second;
       if(d[u] != INT_MAX && d[u] + peso < d[v]){
-	d[v] = d[u] + peso;
-	p[v] = u;
+        d[v] = d[u] + peso;
+        p[v] = u;
 
-	if(!enCola[v]){
-	  cola.push(v);
-	  enCola[v] = true;
-	  conteo[v]++;
+        if(!enCola[v]){
+          cola.push(v);
+          enCola[v] = true;
+          conteo[v]++;
 
-	  //verifica si encontro un ciclo negativo
-	  if(conteo[v] > n)
-	    return false;
-	}
+          //verifica si encontro un ciclo negativo
+          if(conteo[v] > n)
+            return false;
+        }
       }
     }
   }
