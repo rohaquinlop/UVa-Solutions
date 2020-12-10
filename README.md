@@ -18,7 +18,7 @@ My name is Robin, I'm a systems engineering student at Pontificia Universidad Ja
     * Strings
 * Competitions:
     * 2019 ICPC Colombia National: place 17/94
-    * 2019 ICPC South America-North Finals: place 254/316
+    * 2019 ICPC South America-North Finals: place 43/60
 
 ---
 # 2020 Goals
