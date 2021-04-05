@@ -5,4 +5,5 @@ agra/
 *.py
 *.out
 !Solved/*
+!Algorithms/*
 
