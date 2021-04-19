@@ -40,13 +40,13 @@ void dijkstra(int s){
 
     if(costo == d[u]){
       for(j = 0; j < adj[u].size(); ++j){
-	v = adj[u][j].first;
-	peso = adj[u][j].second;
-	if(d[u] != INT_MAX && d[u] + peso < d[v]){
-	  d[v] = d[u] + peso;
-	  p[v] = u;
-	  cola.push(make_pair(d[v], v));
-	}
+        v = adj[u][j].first;
+        peso = adj[u][j].second;
+        if(d[u] != INT_MAX && d[u] + peso < d[v]){
+          d[v] = d[u] + peso;
+          p[v] = u;
+          cola.push(make_pair(d[v], v));
+        }
       }
     }
   }
