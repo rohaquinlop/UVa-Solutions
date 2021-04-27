@@ -40,13 +40,13 @@ bool bellmanFord(int s){
     
     for(i = 0; i < n; i++){
       for(j = 0; j < adj[i].size(); ++j){
-	v = adj[i][j].first;
-	peso = adj[i][j].second;
-	if(d[i] != INT_MAX && d[i] + peso < d[v]){
-	  d[v] = max(-INT_MAX, d[i] + peso);
-	  p[v] = i;
-	  t = v;
-	}
+        v = adj[i][j].first;
+        peso = adj[i][j].second;
+        if(d[i] != INT_MAX && d[i] + peso < d[v]){
+          d[v] = max(-INT_MAX, d[i] + peso);
+          p[v] = i;
+          t = v;
+        }
       }
     }
   }
