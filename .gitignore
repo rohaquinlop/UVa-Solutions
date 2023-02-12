@@ -6,4 +6,5 @@ agra/
 *.out
 !Solved/*
 !Algorithms/*
+!Solving/*
 *.exe
