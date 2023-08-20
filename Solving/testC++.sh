@@ -6,7 +6,7 @@ CYAN='\e[1;36m'
 YELLOW='\e[1;33m'
 BOLD='\033[1m'
 PLAIN='\033[0m'
-g++ $1
+g++ -std=c++11 $1
 time timeout 3 ./a.out < in.txt > out.txt
 if [ $? -eq 124 ]
   then

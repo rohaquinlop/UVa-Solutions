@@ -7,4 +7,6 @@ agra/
 !Solved/*
 !Algorithms/*
 !Solving/*
+Solving/*.txt
+Solving/a.out
 *.exe
